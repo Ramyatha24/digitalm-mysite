@@ -5,3 +5,9 @@ venv/
 .env
 *.log
 *.migrations/
+
+# Static files collected with collectstatic
+/staticfiles/
+
+# Media files
+/media/

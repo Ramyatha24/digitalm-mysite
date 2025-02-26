@@ -95,7 +95,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'myapp' / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Change this line - using a simpler storage method to avoid manifest issues
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage' 
 
 # Media files (for user uploads)
 MEDIA_URL = '/media/'
@@ -123,8 +125,11 @@ PAYU_PAYOUTS = {
 }
 
 # Serving media files in development
-to_append = []
 if DEBUG:
+    # Only for development
     from django.conf.urls.static import static
-    to_append += static(MEDIA_URL, document_root=MEDIA_ROOT)
-    urlpatterns = [] + to_append
+    urlpatterns = static(MEDIA_URL, document_root=MEDIA_ROOT)
+else:
+    # For production - make sure your URLs.py includes this
+    # You'll need to modify your urls.py to include media urls
+    pass

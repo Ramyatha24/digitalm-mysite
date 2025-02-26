@@ -18,10 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from myapp import views
+# The import below isn't being used directly in this file, so it can be removed
+# from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),  # This will include all your myapp URLs
 ]
-urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+# Add these lines to ensure static and media files are served correctly in both development and production
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
