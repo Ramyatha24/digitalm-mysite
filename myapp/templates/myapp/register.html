@@ -1,0 +1,147 @@
+{% extends 'myapp/base.html' %} 
+{% block body %}
+<div class="flex flex-col justify-center items-center min-h-screen">
+    <h1 class="font-bold text-lg mb-6 text-white">🔐 Register</h1>
+    <form class="shadow-lg p-10 rounded-lg bg-black w-96" method="POST">
+        {% csrf_token %}
+        
+        {% if user_form.errors or bank_form.errors %}
+        <div class="mb-4 p-4 bg-red-500/10 border border-red-500 rounded">
+            {% for field, errors in user_form.errors.items %}
+                {% for error in errors %}
+                    <p class="text-red-500 text-sm">{{ field|title }}: {{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            {% for field, errors in bank_form.errors.items %}
+                {% for error in errors %}
+                    <p class="text-red-500 text-sm">{{ field|title }}: {{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="mb-4">
+            <label class="block mb-2 text-white">Username</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ user_form.username }}
+            </div>
+            {% if user_form.username.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.username.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2 text-white">Full Name</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ user_form.first_name }}
+            </div>
+            {% if user_form.first_name.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.first_name.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2 text-white">Email</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ user_form.email }}
+            </div>
+            {% if user_form.email.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.email.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2 text-white">Password</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ user_form.password }}
+            </div>
+            {% if user_form.password.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.password.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-6">
+            <label class="block mb-2 text-white">Confirm Password</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ user_form.password2 }}
+            </div>
+            {% if user_form.password2.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ user_form.password2.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2 text-white">Bank Name</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ bank_form.bank_name }}
+            </div>
+            {% if bank_form.bank_name.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ bank_form.bank_name.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2 text-white">Account Holder Name</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ bank_form.account_holder_name }}
+            </div>
+            {% if bank_form.account_holder_name.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ bank_form.account_holder_name.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2 text-white">Account Number</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ bank_form.account_number }}
+            </div>
+            {% if bank_form.account_number.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ bank_form.account_number.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2 text-white">IFSC Code</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ bank_form.ifsc_code }}
+            </div>
+            {% if bank_form.ifsc_code.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ bank_form.ifsc_code.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-6">
+            <label class="block mb-2 text-white">Branch Name</label>
+            <div class="border rounded py-2 px-3 w-full bg-[#2a2a2a]">
+                {{ bank_form.branch_name }}
+            </div>
+            {% if bank_form.branch_name.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ bank_form.branch_name.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <button class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition duration-200" type="submit">
+            Create Account
+        </button>
+    </form>
+
+    <p class="mt-6 text-white"> 
+        Already registered? 
+        <a class="text-green-500 hover:text-green-400 transition duration-200" href="{% url 'login' %}">
+            Click here to login
+        </a>
+    </p>
+</div>
+
+<style>
+    input {
+        background-color: transparent;
+        color: white;
+        width: 100%;
+        outline: none;
+    }
+    input:focus {
+        outline: none;
+    }
+</style>
+{% endblock %}
