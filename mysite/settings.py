@@ -194,9 +194,9 @@ CSRF_TRUSTED_ORIGINS = [
 RAZORPAY_KEY_ID = env('RAZORPAY_KEY_ID', default='rzp_test_KUuSPp457DO8fX')
 RAZORPAY_KEY_SECRET = env('RAZORPAY_KEY_SECRET', default='Na2dCbSZApOHVEDz3Op9i1Dp')
 
-CASHFREE_CLIENT_ID = os.getenv("CF10490529CV0B0QNSI14C73EO7RDG")
-CASHFREE_CLIENT_SECRET = os.getenv("cfsk_ma_test_c1906312d59e66f661f75fe0d7e81d8d_c9527439")
-CASHFREE_PAYOUT_BASE_URL = os.getenv("https://payout-api.cashfree.com/payout/v1/")
+CASHFREE_CLIENT_ID = env("CF10490529CV0B0QNSI14C73EO7RDG")
+CASHFREE_CLIENT_SECRET = env("cfsk_ma_test_c1906312d59e66f661f75fe0d7e81d8d_c9527439")
+CASHFREE_PAYOUT_BASE_URL = env("https://payout-api.cashfree.com/payout/v1/")
 
 # Database (use SQLite by default)
 DATABASES = {
