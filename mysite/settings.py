@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 SECRET_KEY = env('SECRET_KEY', default='django-insecure-+#@@8#hjqz+9^@vi6rd+2g$(362a_4h%zg#h#3b&1ud!k5#uwz')
-DEBUG = False 
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -141,19 +141,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-# In development (not needed in production if using collectstatic):
 import os
 
-# Static files
+# STATIC FILES
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-import os
-
+# MEDIA FILES
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -196,7 +195,8 @@ RAZORPAY_KEY_SECRET = env('RAZORPAY_KEY_SECRET', default='Na2dCbSZApOHVEDz3Op9i1
 
 CASHFREE_CLIENT_ID = env("CF10490529CV0B0QNSI14C73EO7RDG")
 CASHFREE_CLIENT_SECRET = env("cfsk_ma_test_c1906312d59e66f661f75fe0d7e81d8d_c9527439")
-CASHFREE_PAYOUT_BASE_URL = env("https://payout-api.cashfree.com/payout/v1/")
+CASHFREE_PAYOUT_BASE_URL = env("CASHFREE_PAYOUT_BASE_URL", default="https://payout-api.cashfree.com/payout/v1/")
+
 
 # Database (use SQLite by default)
 DATABASES = {
