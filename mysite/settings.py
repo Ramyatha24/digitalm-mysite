@@ -143,10 +143,14 @@ USE_TZ = True
 
 import os
 
-# STATIC FILES
-STATIC_URL = '/static/'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # This should be added
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "staticfiles"),
+    os.path.join(BASE_DIR, "static")  # Ensure this folder exists in your project
 ]
 
 # MEDIA FILES
@@ -175,19 +179,11 @@ environ.Env.read_env(BASE_DIR / ".env") # Load variables from .env
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '356f-2401-4900-1c26-65f5-19ff-f806-9a9e-3867.ngrok-free.app',
-    'digitalm-mysite.onrender.com',
-    '.render.com',
-]
+import os
+from decouple import config, Csv
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://356f-2401-4900-1c26-65f5-19ff-f806-9a9e-3867.ngrok-free.app',
-    'https://digitalm-mysite.onrender.com',
-    'https://*.render.com',
-]
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())  # ✅ Parses comma-separated values
+CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=Csv())
 
 import os
 from dotenv import load_dotenv
