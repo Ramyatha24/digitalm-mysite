@@ -179,11 +179,12 @@ environ.Env.read_env(BASE_DIR / ".env") # Load variables from .env
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-import os
-from decouple import config, Csv
+from decouple import config
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())  # ✅ Parses comma-separated values
-CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=Csv())
+SECRET_KEY = config('SECRET_KEY')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default="localhost", cast=lambda v: v.split(","))
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default="https://digitalm-mysite.onrender.com", cast=lambda v: v.split(","))
+
 
 import os
 from dotenv import load_dotenv
