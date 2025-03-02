@@ -179,11 +179,11 @@ environ.Env.read_env(BASE_DIR / ".env") # Load variables from .env
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-from decouple import config
 
-SECRET_KEY = config('SECRET_KEY')
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default="localhost", cast=lambda v: v.split(","))
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default="https://digitalm-mysite.onrender.com", cast=lambda v: v.split(","))
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default="localhost", cast=lambda v: v.split(","))
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', default="https://digitalm-mysite.onrender.com", cast=lambda v: v.split(","))
 
 
 import os
