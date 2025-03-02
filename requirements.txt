@@ -12,7 +12,7 @@ setuptools==75.8.0
 sqlparse==0.5.1
 tzdata==2024.2
 urllib3==2.3.0
-gunicorn
+gunicorn==21.2.0
 whitenoise
 decouple
 dotenv
