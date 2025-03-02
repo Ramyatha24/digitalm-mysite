@@ -182,8 +182,9 @@ DEBUG = env.bool("DEBUG", default=False)
 
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default="localhost", cast=lambda v: v.split(","))
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', default="https://digitalm-mysite.onrender.com", cast=lambda v: v.split(","))
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=["localhost"])
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=["https://digitalm-mysite.onrender.com"])
+
 
 
 import os
