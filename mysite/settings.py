@@ -170,7 +170,7 @@ env = environ.Env()
 environ.Env.read_env(BASE_DIR / ".env") # Load variables from .env
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
@@ -189,13 +189,17 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.render.com',
 ]
 
-# Razorpay & Cashfree credentials (DO NOT HARDCODE)
-RAZORPAY_KEY_ID = env('RAZORPAY_KEY_ID', default='rzp_test_KUuSPp457DO8fX')
-RAZORPAY_KEY_SECRET = env('RAZORPAY_KEY_SECRET', default='Na2dCbSZApOHVEDz3Op9i1Dp')
+import os
+from dotenv import load_dotenv
 
-from decouple import config
-CASHFREE_CLIENT_ID = os.getenv('CASHFREE_CLIENT_ID', default='CF10495031CUVNK0VSI14C73EO7R10')
-CASHFREE_CLIENT_SECRET = os.getenv('CASHFREE_CLIENT_SECRET',default='cfsk_ma_test_c1906312d59e66f661f75fe0d7e81d8d_c9527439')
+# Load environment variables
+load_dotenv()
+
+CASHFREE_CLIENT_ID = os.getenv('CASHFREE_CLIENT_ID')
+CASHFREE_CLIENT_SECRET = os.getenv('CASHFREE_CLIENT_SECRET')
+RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = os.getenv('RAZORPAY_KEY_SECRET')
+SECRET_KEY = os.getenv('SECRET_KEY')
 CASHFREE_PAYOUT_BASE_URL = os.getenv("CASHFREE_PAYOUT_BASE_URL", default="https://payout-api.cashfree.com/payout/v1/")
 
 
