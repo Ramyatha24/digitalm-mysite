@@ -16,4 +16,3 @@ gunicorn==23.0.0
 whitenoise
 decouple
 dotenv
-python
