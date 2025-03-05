@@ -181,7 +181,7 @@ DEBUG = env.bool("DEBUG", default=False)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=["localhost"])
-CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=["https://digitalm-mysite.onrender.com"])
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=["https://digitalm-mysite.vercel.app"])
 
 
 
