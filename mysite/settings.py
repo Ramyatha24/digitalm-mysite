@@ -32,14 +32,12 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '356f-2401-4900-1c26-65f5-19ff-f806-9a9e-3867.ngrok-free.app',
-    'digitalm-mysite.onrender.com',
-    '.render.com',
+    '.vercel.app'
 ]
 
 CSRF_TRUSTED_ORIGINS=[
     'https://356f-2401-4900-1c26-65f5-19ff-f806-9a9e-3867.ngrok-free.app',
-    'https://digitalm-mysite.onrender.com',
-    'https://*.render.com',
+    'https://your-vercel-project.vercel.app',
 ]
 
 
