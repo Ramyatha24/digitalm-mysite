@@ -32,12 +32,14 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '356f-2401-4900-1c26-65f5-19ff-f806-9a9e-3867.ngrok-free.app',
-    '.vercel.app'
+    'digitalm-mysite.onrender.com',
+    '.render.com',
 ]
 
 CSRF_TRUSTED_ORIGINS=[
     'https://356f-2401-4900-1c26-65f5-19ff-f806-9a9e-3867.ngrok-free.app',
-    'https://your-vercel-project.vercel.app',
+    'https://digitalm-mysite.onrender.com',
+    'https://*.render.com',
 ]
 
 
@@ -181,7 +183,7 @@ DEBUG = env.bool("DEBUG", default=False)
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=["localhost"])
-CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=["https://digitalm-mysite.vercel.app"])
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=["https://digitalm-mysite.onrender.com"])
 
 
 
