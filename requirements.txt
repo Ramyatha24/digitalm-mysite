@@ -25,3 +25,4 @@ tailwind==3.1.5b0
 tzdata==2024.2
 urllib3==2.3.0
 whitenoise==6.9.0
+waitress
