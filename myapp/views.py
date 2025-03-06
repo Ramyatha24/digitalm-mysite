@@ -167,14 +167,20 @@ def payment_success(request):
         'product': latest_order.product if latest_order else None
     })
 
+from django.shortcuts import redirect
+
 @login_required
 def payment_failed(request):
     """
     Handle failed payment.
     """
     latest_order = OrderDetail.objects.filter(user=request.user, has_paid=False).last()
+    
+    if not latest_order:
+        return redirect('home')  # Redirect to home or another appropriate page
+
     return render(request, 'myapp/payment_failed.html', {
-        'product': latest_order.product if latest_order else None,
+        'product': latest_order.product,
         'error_message': 'Payment could not be processed'
     })
 
