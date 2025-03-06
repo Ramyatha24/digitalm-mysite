@@ -177,7 +177,7 @@ def payment_failed(request):
     latest_order = OrderDetail.objects.filter(user=request.user, has_paid=False).last()
     
     if not latest_order:
-        return redirect('home')  # Redirect to home or another appropriate page
+        return redirect('index')  # Redirect to home or another appropriate page
 
     return render(request, 'myapp/payment_failed.html', {
         'product': latest_order.product,
