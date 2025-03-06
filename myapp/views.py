@@ -216,12 +216,20 @@ def submit_rating(request, product_id):
     
     return redirect("purchases") 
 
+from django.shortcuts import render
+from myapp.models import Products  # Use Products (as defined in models.py)
+
 def index(request):
     """
     Fetch all products and render the index page.
     """
-    products = Products.objects.all()
-    print("Products in index:", products)  # Debug print to check data
+    try:
+        products = Products.objects.all()  # Correct model reference
+        print("Products in index:", products)  # Debug print to check data
+    except Exception as e:
+        print("Error fetching products:", e)  # Print error for debugging
+        products = []  # Ensure products is defined even if there is an error
+
     return render(request, "myapp/index.html", {'products': products})
 
 @login_required
